@@ -154,17 +154,16 @@ styles/
 
 ### Dashboard
 
-![Dashboard](public/screenshots/dashboard.png.jpeg)
+![Dashboard](public/screenshots/dashboard.png.PNG)
 
 ### Pantry
 
 ![Pantry](public/screenshots/pantry.png.jpeg)
 
-![Pantry](public/screenshots/pantry2.png.jpeg)
 
 ### AI Recipes
 
-![Recipes](public/screenshots/recipes.png.jpeg)
+![Recipes](public/screenshots/recipes.png.PNG)
 
 # ⚙️ Environment Variables
 
