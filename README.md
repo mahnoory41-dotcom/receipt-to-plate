@@ -1,82 +1,236 @@
-# 🍳 Receipt-to-Plate: Zero-Waste AI Smart Pantry
+# 🍳 Receipt-to-Plate: AI Zero-Waste Smart Pantry & Recipe Generator
 
-An intelligent, full-stack Next.js web application designed to reduce household food waste. **Receipt-to-Plate** allows users to scan paper grocery receipts or manually input items into a virtual pantry equipped with shelf-life tracking, color-coded freshness badges, and an AI-powered zero-waste recipe generator.
-
----
-
-## ✨ Features
-
-- 📸 **AI Receipt Scanning (OCR):** Upload image receipts (JPG/PNG). Powered by Google Gemini Vision AI to instantly parse item names and estimate expiration shelf life.
-- ✍️ **Manual Pantry Input:** Type in bulk items (comma-separated or single entry) with fallback parsing logic.
-- 🥗 **Interactive Virtual Pantry:**
-  - Real-time search and expiration urgency filtering (*Expiring Soon* vs. *Fresh*).
-  - Color-coded badges indicating estimated days remaining.
-  - Client-side persistence via `localStorage`.
-- 🤖 **Zero-Waste Recipe Engine:** Generates custom recipes based exclusively on available pantry ingredients to minimize waste.
-- 📋 **One-Click Recipe Export:** Copy full recipe steps and ingredients formatted for text messages or notes.
+An AI-powered full-stack web application that helps users reduce household food waste by converting grocery receipts into a smart virtual pantry and generating recipes based on available ingredients.
 
 ---
 
-## 🛠️ Tech Stack
+# 🚀 Live Demo
 
-- **Framework:** Next.js 14 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Icons:** Lucide React
-- **AI Integration:** Google Gemini API (`gemini-2.5-flash` / Gemini Vision)
-- **Deployment:** Vercel
+**Live App:** [https://receipt-to-plate.vercel.app/](https://receipt-to-plate.vercel.app/)
+
+**GitHub Repository:** [https://github.com/mahnoory41-dotcom/receipt-to-plate](https://github.com/mahnoory41-dotcom/receipt-to-plate)
 
 ---
 
-## 🚀 Getting Started
+# 📖 Problem Statement
 
-Follow these steps to run the project locally on your machine.
+Many households buy groceries but forget what they already have or when items are about to expire. This often leads to unnecessary food waste and extra spending.
 
-### Prerequisites
+---
 
-- Node.js (v18.0.0 or higher)
-- npm or yarn
-- Google Gemini API Key ([Get an API key here](https://aistudio.google.com/))
+# 💡 Solution
 
-### Installation
+Receipt-to-Plate uses Google Gemini AI to analyze grocery receipts or manual pantry entries, organize ingredients into a virtual pantry with estimated shelf-life tracking, and recommend recipes that prioritize ingredients close to expiry.
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/mahnoory41-dotcom/receipt-to-plate.git](https://github.com/mahnoory41-dotcom/receipt-to-plate.git)
-   cd receipt-to-plate
-   Install dependencies:
+This helps users:
 
-Bash
+- Reduce food waste
+
+- Save money
+
+- Keep track of groceries
+
+- Cook meals using existing ingredients
+
+---
+
+# ✨ Features
+
+- 📸 AI Receipt Processing using Google Gemini
+
+- ✍️ Manual Pantry Entry
+
+- 🥫 Smart Virtual Pantry
+
+- 🔍 Real-time Search
+
+- 🟢 Freshness & Expiry Badges
+
+- 🤖 AI Recipe Generator
+
+- 📋 One-click Copy Recipe
+
+- 💾 Local Storage Persistence
+
+- 📱 Responsive Design
+
+- ⚡ Loading States
+
+- ❌ Error Handling
+
+---
+
+# 🤖 AI Feature
+
+The application uses **Google Gemini AI** for two main tasks:
+
+### 1. Receipt Analysis
+
+The AI extracts grocery items from uploaded receipts or pasted text.
+
+### 2. Recipe Generation
+
+The AI creates recipes using only ingredients available in the user's pantry while prioritizing ingredients that are closest to expiration.
+
+---
+
+# 🧠 Gemini System Prompt
+
+Example system prompt used:
+
+```text
+
+You are an intelligent pantry assistant.
+
+Analyze grocery receipts and extract grocery items.
+
+For every item identify:
+
+- Item Name
+
+- Quantity (if available)
+
+- Estimated Shelf Life
+
+- Category
+
+Store these items in a virtual pantry.
+
+Generate recipes that prioritize ingredients close to expiry.
+
+Only use available pantry ingredients whenever possible and aim to minimize food waste.
+
+```
+
+---
+
+# 🛠 Tech Stack
+
+### Frontend
+
+- Next.js
+
+- React
+
+- TypeScript
+
+- Tailwind CSS
+
+### AI
+
+- Google Gemini API
+
+### Storage
+
+- Browser LocalStorage
+
+### Deployment
+
+- Vercel
+
+---
+
+# 📂 Folder Structure
+
+```
+
+app/
+
+components/
+
+lib/
+
+public/
+
+styles/
+
+[README.md](http://README.md)
+
+```
+
+---
+
+# # ## 📸 Screenshots
+
+### Dashboard
+
+![Dashboard](public/screenshots/dashboard.png.jpeg)
+
+### Pantry
+
+![Pantry](public/screenshots/pantry.png.jpeg)
+
+![Pantry](public/screenshots/pantry2.png.jpeg)
+
+### AI Recipes
+
+![Recipes](public/screenshots/recipes.png.jpeg)
+
+# ⚙️ Environment Variables
+
+Create a `.env.local` file.
+
+```
+
+GEMINI_API_KEY=YOUR_API_KEY
+```
+
+Never commit API keys to GitHub.
+
+---
+
+# ▶️ Installation
+
+```bash
+
+git clone [https://github.com/mahnoory41-dotcom/receipt-to-plate.git](https://github.com/mahnoory41-dotcom/receipt-to-plate.git)
+
+cd receipt-to-plate
+
 npm install
-Set up Environment Variables:
-Create a .env.local file in the root directory and add your Gemini API key:
 
-Code snippet
-GEMINI_API_KEY=your_actual_gemini_api_key_here
-Run the development server:
-
-Bash
 npm run dev
-Open in browser:
-Navigate to http://localhost:3000 to view the app.
 
-📁 Project Structure
-Plaintext
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── analyze/    # Gemini Receipt OCR & Text Parsing Route
-│   │   │   └── recipes/    # Gemini AI Recipe Generation Route
-│   │   ├── layout.tsx     # Application Root Layout
-│   │   └── page.tsx       # Main Entry Page
-│   └── components/
-│       └── Dashboard.tsx  # Core Pantry & Recipe UI Component
-├── public/                # Static assets
-├── .env.local             # API keys (Git-ignored)
-├── package.json           # Project dependencies
-└── README.md              # Documentation
-🔒 Security & Privacy
-This project strictly ignores .env.local via .gitignore to prevent secret API key exposure. When deploying to production platforms like Vercel, store the API key as an Environment Variable (GEMINI_API_KEY).
+```
 
-📄 License
-This project is created for educational purposes as part of an assignment submission.
+---
+
+# 🌐 Deployment
+
+The application is deployed on **Vercel**.
+
+Any new commits pushed to the main branch automatically trigger a new deployment.
+
+---
+
+# 🔮 Future Improvements
+
+- Barcode Scanner
+
+- Nutrition Analysis
+
+- Shopping List Generator
+
+- User Authentication
+
+- Cloud Database
+
+- Weekly Meal Planner
+
+- Favorite Recipes
+
+---
+
+# 👨‍💻 Author
+
+Mahnoor Yasir
+
+BS Computer Science
+
+---
+
+# 📄 License
+
+This project was developed as an educational final project.
+
+MIT License.
